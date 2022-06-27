@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" class="h-100">
   <head>
-    <title>[APP NAME]: A Coding Project By Harrison Pickett</title>
+    <title>Balanced Brackets: A Coding Project By Harrison Pickett</title>
     <meta charset="utf-8" />
     <meta
       name="viewport"
@@ -99,6 +99,10 @@
     />
     <link
       rel="stylesheet"
+      href="../node_modules/@fontsource/roboto/700.css"
+    />
+    <link
+      rel="stylesheet"
       href="../node_modules/@fortawesome/fontawesome-free/css/all.css"
     />
     <link rel="stylesheet" href="css/prism.css" />
@@ -119,7 +123,7 @@
             alt="HAP Logo"
             height="28"
         /></a>
-        <a class="navbar-brand" href="index.html">[APP NAME]</a>
+        <a class="navbar-brand textLogo" href="index.html">Balanced Brackets</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -148,7 +152,7 @@
               <a
                 class="nav-link"
                 target="_blank"
-                href="https://github.com/harrisonapickettiv/[APP NAME]"
+                href="https://github.com/harrisonapickettiv/balancedBrackets"
                 >Git Repo</a
               >
             </li>
@@ -168,27 +172,157 @@
     <main class="flex-shrink-0">
       <div class="container px-4 py-5 mt-5">
         <h2 class="border-1 border-bottom border-dark">
-          The Code for [APP NAME]
+          The Code for Balanced Brackets
         </h2>
         <div class="row row-cols-1 row-cols-lg-2">
           <div class="col-lg-8">
             <pre class="line-numbers">
               <code class="language-javascript">
-                // This is a comment
-
-                const helloWorld = () => {
-                  console.log("Hello, World!");
+                const resetDisplay = () => {
+                  const errorMessage = document.getElementById("error");
+                  const result = document.getElementById("result");
+                
+                  errorMessage.setAttribute("hidden", true);
+                  errorMessage.setAttribute("aria-hidden", true);
+                  result.setAttribute("aria-hidden", true);
+                  result.setAttribute("hidden", true);
+                  result.innerHTML = "";
                 };
-
+                
+                const getValues = () => {
+                  const brackets = document.getElementById("brackets").value;
+                  const validInput = typeof brackets === "string" || brackets instanceof String;
+                
+                  return { error: !validInput, brackets };
+                };
+                
+                const displayError = () => {
+                  const errorMessage = document.getElementById("error");
+                
+                  errorMessage.removeAttribute("hidden");
+                  errorMessage.removeAttribute("aria-hidden");
+                };
+                
+                const checkBracket = (stack, check) => {
+                  return stack[stack.length - 1] === check;
+                };
+                
+                const checkBalanced = (brackets) => {
+                  const openBrackets = [];
+                  for (const ch of brackets) {
+                    switch (ch) {
+                      case "{":
+                        openBrackets.push(ch);
+                        break;
+                      case "}":
+                        if (checkBracket(openBrackets, "{")) {
+                          openBrackets.pop();
+                        } else {
+                          return false;
+                        }
+                        break;
+                      case "[":
+                        openBrackets.push(ch);
+                        break;
+                      case "]":
+                        if (checkBracket(openBrackets, "[")) {
+                          openBrackets.pop();
+                        } else {
+                          return false;
+                        }
+                        break;
+                      case "(":
+                        openBrackets.push(ch);
+                        break;
+                      case ")":
+                        if (checkBracket(openBrackets, "(")) {
+                          openBrackets.pop();
+                        } else {
+                          return false;
+                        }
+                        break;
+                      default:
+                        break;
+                    }
+                  }
+                
+                  return openBrackets.length === 0;
+                };
+                
+                const displayResult = (balanced) => {
+                  const result = document.getElementById("result");
+                
+                  if (balanced) {
+                    result.innerHTML = `<h2>Brackets are balanced</h2>`;
+                  } else {
+                    result.innerHTML = `<h2>Brackets are <strong>NOT</strong> balanced<h2>`;
+                  }
+                
+                  result.removeAttribute("hidden");
+                  result.removeAttribute("aria-hidden");
+                };
+                
+                const brackets = () => {
+                  resetDisplay();
+                  const { brackets, error } = getValues();
+                  if (error) return displayError();
+                  const balanced = checkBalanced(brackets);
+                  displayResult(balanced);
+                };
               </code>
             </pre>
           </div>
           <div class="col-lg-4">
-            <p>The code is structured in one function.</p>
-            <h5>Hello World</h5>
             <p>
-              Hello World is a function that logs 'Hello, World!' to the
-              console.
+              The code is structured as several functions with a primary
+              controller exported to the application.
+            </p>
+
+            <h5>Reset Display</h5>
+            <p>
+              A function that resets critical components of the display to
+              ensure correct viewing by hiding the error and results elements.
+            </p>
+
+            <h5>Get Values</h5>
+            <p>
+              A function that gets the value of 'userString' from the user
+              interface. Returns the value and whether it is valid input.
+            </p>
+
+            <h5>Display Error</h5>
+            <p>
+              A function that reveals an error message hidden from view. The
+              message indicates that user must enter a string.
+            </p>
+
+            <h5>Check Bracket</h5>
+            <p>
+              A function that takes an array and a string as input and checks if the string
+              matches the last item in the array.  Returns true on a match and false otherwise.
+            </p>
+
+            <h5>Check Balanced</h5>
+            <p>
+              Loops over the user provided string. Pushes open-brackets to an array. Checks for
+              a match to close-brackets. Pops the match off the stack if found, returns false if
+              not found.
+            </p>
+            
+            <h5>Display Result</h5>
+            <p>
+              A function that takes a boolean value indicating whether the
+              string contains balanced brackets. If the boolean is true a
+              message is displayed indicating that the brackets are balanced,
+              if false the message indicates the brackets are not balanced.
+            </p>
+
+            <h5>Brackets</h5>
+            <p>
+              The main application function. Calls getValues to get and validate
+              user input. Then displays an error if getValues finds an error in
+              input. Otherwise, calls checkBalanced followed by displayResult to
+              generate and display a message to the user.
             </p>
           </div>
         </div>
