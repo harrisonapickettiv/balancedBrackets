@@ -2,6 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@babel/core': ^7.18.5
+  '@fontsource/roboto': ^4.5.7
   '@fortawesome/fontawesome-free': ^5.15.4
   '@parcel/core': ^2.6.1
   '@parcel/packager-raw-url': ^2.6.1
@@ -13,6 +14,7 @@ specifiers:
   prismjs: ^1.28.0
 
 dependencies:
+  '@fontsource/roboto': 4.5.7
   '@fortawesome/fontawesome-free': 5.15.4
   '@popperjs/core': 2.11.5
   bootstrap: 5.1.3_@popperjs+core@2.11.5
@@ -222,6 +224,10 @@ packages:
       '@babel/helper-validator-identifier': 7.16.7
       to-fast-properties: 2.0.0
     dev: true
+
+  /@fontsource/roboto/4.5.7:
+    resolution: {integrity: sha512-m57UMER23Mk6Drg9OjtHW1Y+0KPGyZfE5XJoPTOsLARLar6013kJj4X2HICt+iFLJqIgTahA/QAvSn9lwF1EEw==}
+    dev: false
 
   /@fortawesome/fontawesome-free/5.15.4:
     resolution: {integrity: sha512-eYm8vijH/hpzr/6/1CJ/V/Eb1xQFW2nnUKArb3z+yUWv7HTwj6M7SP957oMjfZjAHU6qpoNc2wQvIxBLWYa/Jg==}
@@ -1103,18 +1109,6 @@ packages:
       - '@parcel/core'
     dev: true
 
-  /@parcel/types/2.6.1:
-    resolution: {integrity: sha512-IXt0MiBmg95SKOAyvRNjcNlJvWUMtvCw6ea7+h1mWStm4gcJBoaznbgLJsG2C17AJ2F8CNR/5jZKlM9SDzTayg==}
-    dependencies:
-      '@parcel/cache': 2.6.1_@parcel+core@2.6.1
-      '@parcel/diagnostic': 2.6.1
-      '@parcel/fs': 2.6.1_@parcel+core@2.6.1
-      '@parcel/package-manager': 2.6.1_@parcel+core@2.6.1
-      '@parcel/source-map': 2.0.5
-      '@parcel/workers': 2.6.1_@parcel+core@2.6.1
-      utility-types: 3.10.0
-    dev: true
-
   /@parcel/types/2.6.1_@parcel+core@2.6.1:
     resolution: {integrity: sha512-IXt0MiBmg95SKOAyvRNjcNlJvWUMtvCw6ea7+h1mWStm4gcJBoaznbgLJsG2C17AJ2F8CNR/5jZKlM9SDzTayg==}
     dependencies:
@@ -1160,7 +1154,7 @@ packages:
       '@parcel/core': 2.6.1
       '@parcel/diagnostic': 2.6.1
       '@parcel/logger': 2.6.1
-      '@parcel/types': 2.6.1
+      '@parcel/types': 2.6.1_@parcel+core@2.6.1
       '@parcel/utils': 2.6.1
       chrome-trace-event: 1.0.3
       nullthrows: 1.1.1

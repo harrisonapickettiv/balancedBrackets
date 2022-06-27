@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" class="h-100">
   <head>
-    <title>[APP NAME]: A Coding Project By Harrison Pickett</title>
+    <title>Balanced Brackets: A Coding Project By Harrison Pickett</title>
     <meta charset="utf-8" />
     <meta
       name="viewport"
@@ -97,6 +97,7 @@
       rel="stylesheet"
       href="../node_modules/bootstrap/dist/css/bootstrap.css"
     />
+    <link rel="stylesheet" href="../node_modules/@fontsource/roboto/700.css" />
     <link
       rel="stylesheet"
       href="../node_modules/@fortawesome/fontawesome-free/css/all.css"
@@ -118,7 +119,7 @@
             alt="HAP Logo"
             height="28"
         /></a>
-        <a class="navbar-brand" href="index.html">[APP NAME]</a>
+        <a class="navbar-brand textLogo" href="index.html">Balanced Brackets</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -147,7 +148,7 @@
               <a
                 class="nav-link"
                 target="_blank"
-                href="https://github.com/harrisonapickettiv/[APP NAME]"
+                href="https://github.com/harrisonapickettiv/balancedBrackets"
                 >Git Repo</a
               >
             </li>
@@ -165,7 +166,63 @@
     </nav>
     <!-- ==== Main Section ==== -->
     <main class="flex-shrink-0">
-      <div class="container"></div>
+      <div class="container mt-5 px-4 py-5">
+        <div class="row row-cols-1 row-cols-lg-2">
+          <div class="col col-lg-4">
+            <h3 class="fw-bold lh-1 mb-3">
+              Balanced Brackets: A Coding Project
+            </h3>
+            <h4 class="lead">
+              Given the string <strong>[()]{}{[()()]()}</strong>, write a
+              function that takes a string parameter containing brackets,
+              determine if all brackets have a matching counterpart. <br />
+              If all brackets in the string form balanced pairs, return true. If
+              not, return false.
+            </h4>
+            <h2 class="mt-5 border-2 border-bottom">Instructions</h2>
+            <p>
+              Enter a string and press the button. A message telling whether the
+              string has balanced brackets will appear.
+            </p>
+          </div>
+          <div class="col col-lg-8">
+            <form action="submit">
+              <h4>Enter A String</h4>
+              <div class="row mb-5">
+                <div class="col d-flex justify-content-start">
+                  <input
+                    class="form-control"
+                    id="brackets"
+                    type="string"
+                    placeholder="[()]{}{[()()]()}"
+                    aria-label="Enter a string"
+                    value="[()]{}{[()()]()}"
+                  />
+                </div>
+                <div class="col-12 mt-2 d-flex justify-content-end">
+                  <button
+                    id="btnSubmit"
+                    type="submit"
+                    class="btn btn-primary btn-lg"
+                  >
+                    Check Brackets
+                  </button>
+                </div>
+              </div>
+            </form>
+            <div
+              id="error"
+              class="col-12 bg-danger p-4"
+              hidden
+              aria-hidden="true"
+            >
+              <h3 class="text-white">Error:</h3>
+              <p class="text-white m-0">An Unknown Error Occurred</p>
+            </div>
+            <div id="result" class="row" hidden aria-hidden="true"></div>
+          </div>
+        </div>
+      </div>
     </main>
     <!-- ==== Footer Section ==== -->
     <footer class="footer mt-auto py-3">
@@ -234,5 +291,5 @@
     type="module"
     src="../node_modules/bootstrap/dist/js/bootstrap.js"
   ></script>
-  <script src="js/site.js"></script>
+  <script type="module" src="js/app.js"></script>
 </html>
